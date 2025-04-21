@@ -1,7 +1,7 @@
 FROM scratch AS ctx
 COPY build_files /
 
-FROM quay.io/fedora/fedora-silverblue:40
+FROM quay.io/fedora/fedora-silverblue:40@sha256:2fac5941a4961f7a4b0e303f1bb70518f2029de16474284cf571707e196fe933
 
 COPY system_files /
 
