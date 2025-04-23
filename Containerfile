@@ -3,7 +3,8 @@ COPY build_files /
 
 FROM quay.io/fedora-ostree-desktops/silverblue:40
 
-RUN rpm-ostree install dnf5
+RUN rpm-ostree install dnf5 && \
+    dnf5 install dnf5-command(config-manager)
 
 COPY system_files /
 
