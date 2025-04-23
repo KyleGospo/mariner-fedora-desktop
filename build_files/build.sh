@@ -2,6 +2,9 @@
 
 set -ouex pipefail
 
+dnf5 -y remove \
+	firefox
+
 # Remove fedora-release packages (with nodeps), then immeidately install the mariner replacement
 # This must be a direct RPM URL because we're unable to use the azure linux repos without a valid version in os-release. It'll get updated in the next step.
 rpm -ev $(rpm -qa | grep ^fedora-) --nodeps
@@ -18,6 +21,11 @@ dnf5 -y install \
 	azurelinux-repos-shared \
 	azurelinux-rpm-macros \
 	azurelinux-sysinfo
+
+dnf5 -y config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+
+dnf5 -y install \
+	microsoft-edge
 
 # Install Azure Linux kernel
 dnf5 -y remove --no-autoremove \
