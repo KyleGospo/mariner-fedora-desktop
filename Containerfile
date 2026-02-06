@@ -1,7 +1,7 @@
 FROM scratch AS ctx
 COPY build_files /
 
-FROM quay.io/fedora-ostree-desktops/silverblue:40
+FROM quay.io/fedora-ostree-desktops/silverblue:44@sha256:bab90990adc4e7ba745cf118d2edcb11ba57cb4a8a0aed8fba480bb6e20510a1
 
 RUN rpm-ostree install dnf5 dnf5-plugins
 
